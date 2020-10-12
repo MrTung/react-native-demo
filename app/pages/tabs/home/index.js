@@ -15,7 +15,7 @@ export class Home extends React.Component {
         <Text>Home Screen</Text>
         <Text>itemId: {JSON.stringify(itemId)}</Text>
         <Button
-          title="Go to Details1"
+          title="Go to Details"
           onPress={() =>
             navigation.navigate('Details', {
               itemId: 86,
