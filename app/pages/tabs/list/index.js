@@ -48,7 +48,7 @@ const wait = timeout => {
   });
 };
 
-const List = () => {
+const List = ({navigation}) => {
   const [selectedId, setSelectedId] = useState(null);
 
   const [refreshing, setRefreshing] = React.useState(false);
@@ -59,13 +59,21 @@ const List = () => {
     wait(2000).then(() => setRefreshing(false));
   }, []);
 
+  const gotoDetail = item => {
+    setSelectedId(item.id);
+    navigation.navigate('Details', {
+      itemId: 86,
+      otherParam: 'anything you want here',
+    });
+  };
+
   const renderItem = ({item}) => {
     const backgroundColor = item.id === selectedId ? '#6e3b6e' : '#f9c2ff';
 
     return (
       <Item
         item={item}
-        onPress={() => setSelectedId(item.id)}
+        onPress={() => gotoDetail(item)}
         style={{backgroundColor}}
       />
     );

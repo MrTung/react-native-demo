@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+
 import Icon from 'react-native-vector-icons/Ionicons';
 import MineScreen from '../pages/tabs/mine';
 import HomeScreen from '../pages/tabs/home';
@@ -17,6 +18,7 @@ export class Home extends React.Component {
     return (
       <Tab.Navigator
         screenOptions={({route}) => ({
+          headerTitle: '111',
           tabBarIcon: ({focused, color, size}) => {
             let iconName;
             if (route.name === 'Home') {
