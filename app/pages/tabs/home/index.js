@@ -1,9 +1,14 @@
 import * as React from 'react';
 import {View, Text, Button} from 'react-native';
-
+import {testRequest} from '../../../servers/home.server';
 export class Home extends React.Component {
   constructor(props) {
     super(props);
+  }
+
+  async test() {
+    const res = await testRequest();
+    console.log(res, 'res');
   }
 
   render() {
@@ -32,6 +37,7 @@ export class Home extends React.Component {
             })
           }
         />
+        <Button title="测试网络请求" onPress={() => this.test()} />
       </View>
     );
   }

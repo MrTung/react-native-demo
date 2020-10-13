@@ -1,9 +1,23 @@
 import * as React from 'react';
 import {View, Text, Button} from 'react-native';
+import {WToast as Toast} from 'react-native-smart-tip';
+import {EasyLoading, Loading} from '../../components/loading';
 
 export class Index extends React.Component {
   constructor(props) {
     super(props);
+  }
+
+  show() {
+    const toastOpts = {
+      data: 'Hello World',
+      position: Toast.position.CENTER,
+    };
+    Toast.show(toastOpts);
+  }
+
+  showLoading() {
+    EasyLoading.show();
   }
 
   render() {
@@ -22,11 +36,14 @@ export class Index extends React.Component {
             })
           }
         />
+        <Button title="show toast" onPress={() => this.show()} />
+        <Button title="show loading" onPress={() => this.showLoading()} />
         <Button
           title="Go to Home"
           onPress={() => navigation.navigate('Home', {post: 'postText'})}
         />
         <Button title="Go back" onPress={() => navigation.goBack()} />
+        {/* <Loading></Loading> */}
       </View>
     );
   }
