@@ -5,6 +5,8 @@ import { getTablist, getSpuList } from '../../../servers/home.server';
 export class Home extends React.Component {
   constructor(props) {
     super(props);
+
+    // console.log(process.env.configuration + '1212');
   }
 
   async test() {

@@ -1,7 +1,6 @@
 import { request } from '../utils/request';
 
-// const {gateWayApi} = process.env.MODULE;
-// const {host} = gateWayApi;
+const { host } = process.env.APPCONFIG;
 
 /**
  * 测试请求
@@ -11,7 +10,7 @@ export const getTablist = (data, params) => {
     url: 'mall/operation/tabs/page',
     method: 'GET',
     data,
-    host: 'https://tech-dev.api.fuliaoyi.com/',
+    host,
     params,
   });
 };
@@ -24,7 +23,7 @@ export const getSpuList = (data, params) => {
     url: 'mall/spu',
     method: 'POST',
     data,
-    host: 'https://tech-dev.api.fuliaoyi.com/',
+    host,
     params,
   });
 };
