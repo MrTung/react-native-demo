@@ -27,19 +27,27 @@ type RequestOptions = {
   [propsName: string]: any;
 };
 
+// axios.interceptors.response.use(
+//   res => {
+//     if (res) {
+//       return res;
+//     }
+//   },
+//   err => {
+//     return Promise.reject(err);
+//   },
+// );
+
 axios.defaults.headers['Content-Type'] = 'application/json;charset=UTF-8';
 axios.defaults['jwtError'] = false;
 
-export default async function request(
-  options: RequestOptions,
-): Promise<object | null> {
-  console.log('object');
+export const request = async (options: RequestOptions) => {
   const {method, data = {}, params = {}, headers = {}, host, url} = options;
   try {
     const {status, data: resopnse} = await axios({
       baseURL: host,
       url,
-      data,
+      data: method === 'GET' ? null : data,
       params,
       method,
       headers,
@@ -47,7 +55,7 @@ export default async function request(
       withCredentials: true,
     });
     if (status === 200 && resopnse.code === 8000) {
-      return resopnse.data || resopnse.result || {};
+      return resopnse.result || resopnse.data || {};
     }
     if (
       resopnse.code === 10103 ||
@@ -84,4 +92,4 @@ export default async function request(
     }
     return null;
   }
-}
+};

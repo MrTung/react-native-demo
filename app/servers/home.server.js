@@ -1,4 +1,4 @@
-import {request} from '../utils/request';
+import { request } from '../utils/request';
 
 // const {gateWayApi} = process.env.MODULE;
 // const {host} = gateWayApi;
@@ -6,14 +6,25 @@ import {request} from '../utils/request';
 /**
  * 测试请求
  */
-export const testRequest = (data, params) => {
-  request({
-    url: 'mall/json/city.json',
+export const getTablist = (data, params) => {
+  return request({
+    url: 'mall/operation/tabs/page',
     method: 'GET',
     data,
-    host: 'https://fly-resource.oss-cn-shanghai.aliyuncs.com/',
+    host: 'https://tech-dev.api.fuliaoyi.com/',
     params,
   });
 };
 
-export const empt = () => {};
+/**
+ * 测试POST请求
+ */
+export const getSpuList = (data, params) => {
+  return request({
+    url: 'mall/spu',
+    method: 'POST',
+    data,
+    host: 'https://tech-dev.api.fuliaoyi.com/',
+    params,
+  });
+};

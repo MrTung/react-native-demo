@@ -1,22 +1,35 @@
 import * as React from 'react';
-import {View, Text, Button} from 'react-native';
-import {testRequest} from '../../../servers/home.server';
+import { View, Text, Button } from 'react-native';
+import { getTablist, getSpuList } from '../../../servers/home.server';
+
 export class Home extends React.Component {
   constructor(props) {
     super(props);
   }
 
   async test() {
-    const res = await testRequest();
-    console.log(res, 'res');
+    const res = await getTablist();
+    console.log('请求结果：', res);
+
+    const spu = await getSpuList(
+      {
+        'categoryId': '',
+        'categoryNameKey': '',
+        'keywords': '',
+      },
+      {
+        'pageNum': 1,
+        'pageSize': 10,
+      });
+    console.log('请求结果spu：', spu);
   }
 
   render() {
-    const {navigation, route} = this.props;
-    const {itemId} = route.params;
+    const { navigation, route } = this.props;
+    const { itemId } = route.params;
     console.log(route.params, 'route.params');
     return (
-      <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Text>Home Screen</Text>
         <Text>itemId: {JSON.stringify(itemId)}</Text>
         <Button
