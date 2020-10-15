@@ -1,6 +1,8 @@
 import { request } from '../utils/request';
 
-const { host } = process.env.APPCONFIG;
+// const { host } = process.env.APPCONFIG;
+
+const host = 'https://tech-dev.api.fuliaoyi.com';
 
 /**
  * 测试请求
