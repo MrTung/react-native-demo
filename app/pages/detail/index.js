@@ -20,6 +20,10 @@ export class Index extends React.Component {
     EasyLoading.show();
   }
 
+  hideLoading() {
+    EasyLoading.hide();
+  }
+
   render() {
     const {navigation, route} = this.props;
     const {itemId, otherParam} = route.params;
@@ -38,6 +42,7 @@ export class Index extends React.Component {
         />
         <Button title="show toast" onPress={() => this.show()} />
         <Button title="show loading" onPress={() => this.showLoading()} />
+        <Button title="hide loading" onPress={() => this.hideLoading()} />
         <Button
           title="Go to Home"
           onPress={() => navigation.navigate('Home', {post: 'postText'})}

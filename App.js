@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+
 import AuthRouter from './app/routers/AuthRouter';
 import AppRouter from './app/routers/AppRouter';
 
@@ -23,7 +24,7 @@ export default () => {
         <RootStack.Screen
           name="Main"
           component={AppRouter}
-          options={{ headerShown: false }}
+          options={{headerShown: false}}
         />
         <RootStack.Screen name="Login" component={AuthRouter} />
       </RootStack.Navigator>

@@ -24,7 +24,9 @@
     "react-native-screens": "^2.11.0",
     "react-native-smart-tip": "^2.2.1",
     "react-native-vector-icons": "^7.1.0",
-    "react-navigation": "^4.4.2"
+    "react-navigation": "^4.4.2",
+    "react-redux": "^7.2.1",
+    "redux": "^4.0.5"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
@@ -34,7 +36,8 @@
     "eslint": "^6.5.1",
     "jest": "^25.1.0",
     "metro-react-native-babel-preset": "^0.59.0",
-    "react-test-renderer": "16.13.1"
+    "react-test-renderer": "16.13.1",
+    "redux-devtools": "^3.7.0"
   },
   "jest": {
     "preset": "react-native"

@@ -10,19 +10,14 @@ let rootSiblings;
 export class EasyLoading {
   static show = () => {
     if (rootSiblings !== undefined) {
-      EasyLoading.dismiss();
+      EasyLoading.hide();
       console.log('object1');
     }
     console.log('object');
-    rootSiblings = new RootSiblings(
-      (
-        // (<ActivityIndicator size="large" color="red" />),
-        <Loading />
-      ),
-    );
+    rootSiblings = new RootSiblings((<Loading />));
   };
 
-  static dismiss = () => {
+  static hide = () => {
     if (rootSiblings) {
       rootSiblings.destroy();
       rootSiblings = undefined;
