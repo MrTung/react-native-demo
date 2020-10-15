@@ -42,12 +42,12 @@ axios.defaults.headers['Content-Type'] = 'application/json;charset=UTF-8';
 axios.defaults['jwtError'] = false;
 
 export const request = async (options: RequestOptions) => {
-  const {method, data = {}, params = {}, headers = {}, host, url} = options;
+  const {method, data = null, params = {}, headers = {}, host, url} = options;
   try {
     const {status, data: resopnse} = await axios({
       baseURL: host,
       url,
-      data: method === 'GET' ? null : data,
+      data,
       params,
       method,
       headers,
