@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+
 import {
   FlatList,
   SafeAreaView,
@@ -16,7 +17,7 @@ const DATA = [
   },
 ];
 
-const Item = ({item, onPress, style}) => (
+const Item = ({ item, onPress, style }) => (
   <TouchableOpacity onPress={onPress} style={[styles.item, style]}>
     <Text style={styles.title}>{item.title}</Text>
   </TouchableOpacity>
@@ -41,13 +42,13 @@ const List = props => {
     wait(2000).then(() => setRefreshing(false));
   }, []);
 
-  const renderItem = ({item}) => {
+  const renderItem = ({ item }) => {
     const backgroundColor = item.id === selectedId ? '#6e3b6e' : '#f9c2ff';
     return (
       <Item
         item={item}
         onPress={() => goToDetail(item)}
-        style={{backgroundColor}}
+        style={{ backgroundColor }}
       />
     );
   };

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { View, Text, Button } from 'react-native';
 import { getTablist, getSpuList } from '../../../servers/home.server';
+import AsyncStorage from '@react-native-community/async-storage';
 
 export class Home extends React.Component {
   constructor(props) {
@@ -24,6 +25,25 @@ export class Home extends React.Component {
         'pageSize': 10,
       });
     console.log('请求结果spu：', spu);
+
+    this.storeData('hello storage');
+  }
+
+  async storeData(value) {
+    try {
+      await AsyncStorage.setItem('@storage_Key', value);
+    } catch (e) {
+    }
+  }
+
+  async getData() {
+    try {
+      const value = await AsyncStorage.getItem('@storage_Key');
+      if (value !== null) {
+        console.log(value);
+      }
+    } catch (e) {
+    }
   }
 
   render() {
@@ -53,6 +73,7 @@ export class Home extends React.Component {
           }
         />
         <Button title="测试网络请求" onPress={() => this.test()} />
+        <Button title="get storage" onPress={() => this.getData()} />
       </View>
     );
   }
