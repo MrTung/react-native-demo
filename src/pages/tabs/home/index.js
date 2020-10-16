@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { View, Text, Button } from 'react-native';
-import { getTablist, getSpuList } from '../../../servers/home.server';
+import {View, Text, Button} from 'react-native';
+import {getTablist, getSpuList} from '../../../containers/home.server';
 import AsyncStorage from '@react-native-community/async-storage';
 
 export class Home extends React.Component {
@@ -16,14 +16,15 @@ export class Home extends React.Component {
 
     const spu = await getSpuList(
       {
-        'categoryId': '',
-        'categoryNameKey': '',
-        'keywords': '',
+        categoryId: '',
+        categoryNameKey: '',
+        keywords: '',
       },
       {
-        'pageNum': 1,
-        'pageSize': 10,
-      });
+        pageNum: 1,
+        pageSize: 10,
+      },
+    );
     console.log('请求结果spu：', spu);
 
     this.storeData('hello storage');
@@ -32,8 +33,7 @@ export class Home extends React.Component {
   async storeData(value) {
     try {
       await AsyncStorage.setItem('@storage_Key', value);
-    } catch (e) {
-    }
+    } catch (e) {}
   }
 
   async getData() {
@@ -42,16 +42,15 @@ export class Home extends React.Component {
       if (value !== null) {
         console.log(value);
       }
-    } catch (e) {
-    }
+    } catch (e) {}
   }
 
   render() {
-    const { navigation, route } = this.props;
-    const { itemId } = route.params;
+    const {navigation, route} = this.props;
+    const {itemId} = route.params;
     console.log(route.params, 'route.params');
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
         <Text>Home Screen</Text>
         <Text>itemId: {JSON.stringify(itemId)}</Text>
         <Button

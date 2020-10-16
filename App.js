@@ -2,8 +2,8 @@ import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {Platform} from 'react-native';
-import AuthRouter from './app/routers/AuthRouter';
-import AppRouter from './app/routers/AppRouter';
+import AuthRouter from './src/routers/AuthRouter';
+import AppRouter from './src/routers/AppRouter';
 
 console.log(Platform.OS);
 
