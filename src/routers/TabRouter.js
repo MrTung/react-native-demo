@@ -2,7 +2,8 @@ import * as React from 'react';
 
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-import Icon from 'react-native-vector-icons/Ionicons';
+import IconFont from '../assets/iconfont';
+
 import MineScreen from '../pages/tabs/mine';
 import HomeScreen from '../pages/tabs/home';
 import ListScreen from '../pages/tabs/list';
@@ -17,13 +18,13 @@ export class Home extends React.Component {
   getIcon(route, focused) {
     let iconName;
     if (route.name === 'Home') {
-      iconName = focused ? 'ios-add-circle-outline' : 'ios-add-circle-outline';
-    } else if (route.name === 'List') {
-      iconName = focused ? 'ios-bicycle-outline' : 'ios-bicycle-outline';
+      iconName = focused ? 'gongzuotainor' : 'gongzuotais';
+    } else if (route.name === 'Fuliao') {
+      iconName = focused ? 'fuliaonor' : 'fuliaos';
     } else if (route.name === 'Customer') {
-      iconName = focused ? 'ios-bicycle-outline' : 'ios-bicycle-outline';
-    } else if (route.name === 'Settings') {
-      iconName = focused ? 'ios-car-sport-outline' : 'ios-car-sport-outline';
+      iconName = focused ? 'gongzuotais' : 'gongzuotais';
+    } else if (route.name === 'Mine') {
+      iconName = focused ? 'mingpiannor' : 'mingpians';
     }
     return iconName;
   }
@@ -34,17 +35,17 @@ export class Home extends React.Component {
         screenOptions={({route}) => ({
           tabBarIcon: ({focused, color, size}) => {
             return (
-              <Icon
+              <IconFont
                 name={this.getIcon(route, focused)}
-                size={size}
+                size={20}
                 color={color}
               />
             );
           },
         })}
         tabBarOptions={{
-          activeTintColor: 'tomato',
-          inactiveTintColor: 'gray',
+          activeTintColor: '#1467FF',
+          inactiveTintColor: '#9DA1AD',
         }}>
         <Tab.Screen
           name="Home"
@@ -53,7 +54,7 @@ export class Home extends React.Component {
           component={HomeScreen}
         />
         <Tab.Screen
-          name="List"
+          name="Fuliao"
           component={ListScreen}
           options={{title: '辅料'}}
         />
@@ -63,7 +64,7 @@ export class Home extends React.Component {
           component={ListScreen}
         />
         <Tab.Screen
-          name="Settings"
+          name="Mine"
           options={{title: '我的'}}
           component={MineScreen}
         />
