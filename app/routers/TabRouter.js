@@ -14,27 +14,32 @@ export class Home extends React.Component {
     super(props);
   }
 
+  getIcon(route, focused) {
+    let iconName;
+    if (route.name === 'Home') {
+      iconName = focused ? 'ios-add-circle-outline' : 'ios-add-circle-outline';
+    } else if (route.name === 'List') {
+      iconName = focused ? 'ios-bicycle-outline' : 'ios-bicycle-outline';
+    } else if (route.name === 'Customer') {
+      iconName = focused ? 'ios-bicycle-outline' : 'ios-bicycle-outline';
+    } else if (route.name === 'Settings') {
+      iconName = focused ? 'ios-car-sport-outline' : 'ios-car-sport-outline';
+    }
+    return iconName;
+  }
+
   render() {
     return (
       <Tab.Navigator
         screenOptions={({route}) => ({
-          headerTitle: '111',
           tabBarIcon: ({focused, color, size}) => {
-            let iconName;
-            if (route.name === 'Home') {
-              iconName = focused
-                ? 'ios-add-circle-outline'
-                : 'ios-add-circle-outline';
-            } else if (route.name === 'Settings') {
-              iconName = focused
-                ? 'ios-bicycle-outline'
-                : 'ios-bicycle-outline';
-            } else {
-              iconName = focused
-                ? 'ios-car-sport-outline'
-                : 'ios-car-sport-outline';
-            }
-            return <Icon name={iconName} size={size} color={color} />;
+            return (
+              <Icon
+                name={this.getIcon(route, focused)}
+                size={size}
+                color={color}
+              />
+            );
           },
         })}
         tabBarOptions={{
@@ -43,14 +48,19 @@ export class Home extends React.Component {
         }}>
         <Tab.Screen
           name="Home"
-          options={{title: '首页'}}
+          options={{title: '工作台'}}
           initialParams={{itemId: 42}}
           component={HomeScreen}
         />
         <Tab.Screen
           name="List"
           component={ListScreen}
-          options={{title: '分类页'}}
+          options={{title: '辅料'}}
+        />
+        <Tab.Screen
+          name="Customer"
+          options={{title: '客户'}}
+          component={ListScreen}
         />
         <Tab.Screen
           name="Settings"
