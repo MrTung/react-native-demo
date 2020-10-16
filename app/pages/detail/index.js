@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {View, Text, Button} from 'react-native';
+import {View, Text, Button, ActionSheetIOS} from 'react-native';
 import {WToast as Toast} from 'react-native-smart-tip';
 
 export class Index extends React.Component {
@@ -15,7 +15,22 @@ export class Index extends React.Component {
     Toast.show(toastOpts);
   }
 
-  showLoading() {}
+  showLoading() {
+    ActionSheetIOS.showActionSheetWithOptions(
+      {
+        options: ['取消', '删除'],
+        destructiveButtonIndex: 1,
+        cancelButtonIndex: 0,
+      },
+      buttonIndex => {
+        if (buttonIndex === 0) {
+          // cancel action
+        } else if (buttonIndex === 1) {
+        } else if (buttonIndex === 2) {
+        }
+      },
+    );
+  }
 
   hideLoading() {}
 

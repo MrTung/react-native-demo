@@ -1,9 +1,11 @@
 import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-
+import {Platform} from 'react-native';
 import AuthRouter from './app/routers/AuthRouter';
 import AppRouter from './app/routers/AppRouter';
+
+console.log(Platform.OS);
 
 // 配置一波编译环境
 const envDirectory = process.env.NODE_ENV;
@@ -14,7 +16,6 @@ if (envDirectory === 'development') {
 } else if (envDirectory === 'release') {
   process.env.APPCONFIG = require('./build/release.js');
 }
-
 const RootStack = createStackNavigator();
 
 export default () => {
