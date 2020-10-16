@@ -1,5 +1,6 @@
 import axios from 'axios';
-import {WToast as Toast} from 'react-native-smart-tip';
+import { WToast as Toast } from 'react-native-smart-tip';
+import { Loading } from '../../components/loading';
 
 type METHOD =
   | 'get'
@@ -25,6 +26,7 @@ type RequestOptions = {
   headers?: object;
   params?: object;
   [propsName: string]: any;
+  showLoading: Boolean;
 };
 
 // axios.interceptors.response.use(
@@ -42,9 +44,10 @@ axios.defaults.headers['Content-Type'] = 'application/json;charset=UTF-8';
 axios.defaults['jwtError'] = false;
 
 export const request = async (options: RequestOptions) => {
-  const {method, data = null, params = {}, headers = {}, host, url} = options;
+  const { method, data = null, params = {}, headers = {}, host, url, showLoading = false, } = options;
+  if (showLoading) Loading.show();
   try {
-    const {status, data: resopnse} = await axios({
+    const { status, data: resopnse } = await axios({
       baseURL: host,
       url,
       data,
@@ -54,6 +57,7 @@ export const request = async (options: RequestOptions) => {
       timeout: 60 * 1000,
       withCredentials: true,
     });
+    Loading.hide();
     if (status === 200 && resopnse.code === 8000) {
       return resopnse.result || resopnse.data || {};
     }
@@ -77,9 +81,10 @@ export const request = async (options: RequestOptions) => {
     });
     return null;
   } catch (error) {
-    const {response} = error;
+    Loading.hide();
+    const { response } = error;
     if (response) {
-      const {status} = response;
+      const { status } = response;
       Toast.show({
         data: `服务异常 - ${status}`,
         position: Toast.position.CENTER,

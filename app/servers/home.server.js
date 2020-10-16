@@ -1,4 +1,4 @@
-import { request } from '../utils/request';
+import {request} from '../utils/request';
 
 // const { host } = process.env.APPCONFIG;
 
@@ -14,6 +14,7 @@ export const getTablist = (data, params) => {
     data,
     host,
     params,
+    showLoading: true,
   });
 };
 

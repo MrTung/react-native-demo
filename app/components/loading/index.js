@@ -7,14 +7,12 @@ import {StyleSheet, Text, View, Modal, ActivityIndicator} from 'react-native';
 const defaultText = '加载中...';
 let rootSiblings;
 
-export class EasyLoading {
+export class Loading {
   static show = () => {
     if (rootSiblings !== undefined) {
-      EasyLoading.hide();
-      console.log('object1');
+      Loading.hide();
     }
-    console.log('object');
-    rootSiblings = new RootSiblings((<Loading />));
+    rootSiblings = new RootSiblings((<HUD />));
   };
 
   static hide = () => {
@@ -25,7 +23,7 @@ export class EasyLoading {
   };
 }
 
-export class Loading extends React.Component {
+export class HUD extends React.Component {
   static propTypes = {
     color: PropTypes.string,
     textStyle: PropTypes.any,

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import Icon from 'react-native-vector-icons/Ionicons';
 import MineScreen from '../pages/tabs/mine';
@@ -17,9 +17,9 @@ export class Home extends React.Component {
   render() {
     return (
       <Tab.Navigator
-        screenOptions={({ route }) => ({
+        screenOptions={({route}) => ({
           headerTitle: '111',
-          tabBarIcon: ({ focused, color, size }) => {
+          tabBarIcon: ({focused, color, size}) => {
             let iconName;
             if (route.name === 'Home') {
               iconName = focused
@@ -43,18 +43,18 @@ export class Home extends React.Component {
         }}>
         <Tab.Screen
           name="Home"
-          options={{ title: '首页' }}
-          initialParams={{ itemId: 42 }}
+          options={{title: '首页'}}
+          initialParams={{itemId: 42}}
           component={HomeScreen}
         />
         <Tab.Screen
           name="List"
           component={ListScreen}
-          options={{ title: '分类页' }}
+          options={{title: '分类页'}}
         />
         <Tab.Screen
           name="Settings"
-          options={{ title: '我的' }}
+          options={{title: '我的'}}
           component={MineScreen}
         />
       </Tab.Navigator>

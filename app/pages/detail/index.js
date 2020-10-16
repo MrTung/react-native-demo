@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {View, Text, Button} from 'react-native';
 import {WToast as Toast} from 'react-native-smart-tip';
-import {EasyLoading, Loading} from '../../components/loading';
 
 export class Index extends React.Component {
   constructor(props) {
@@ -16,13 +15,9 @@ export class Index extends React.Component {
     Toast.show(toastOpts);
   }
 
-  showLoading() {
-    EasyLoading.show();
-  }
+  showLoading() {}
 
-  hideLoading() {
-    EasyLoading.hide();
-  }
+  hideLoading() {}
 
   render() {
     const {navigation, route} = this.props;
@@ -48,7 +43,6 @@ export class Index extends React.Component {
           onPress={() => navigation.navigate('Home', {post: 'postText'})}
         />
         <Button title="Go back" onPress={() => navigation.goBack()} />
-        {/* <Loading></Loading> */}
       </View>
     );
   }
